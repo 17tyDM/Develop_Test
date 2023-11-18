@@ -72,7 +72,31 @@ def test_make_judge_no5():
     result = make_judge(grade, points)
     assert result == 3
 
-test_make_judge_no1()
+def test_make_judge_exercise_1():
+    """
+    スライド22ページ：課題
+    テスト内容：成績が「A~E」以外の場合
+    """
+    try:
+        grade = "F"
+        points = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+        result = make_judge(grade, points)
+        assert False
+    except Exception as e:
+        assert e.args[0] == "graderにA～E以外の文字が入力されています"
+
+def test_make_judge_exercise_2():
+    """
+    スライド22ページ：課題
+    テスト内容：pointsが[0-100]*10のリストでない場合
+    """
+    try:
+        grade = "A"
+        points = [100, 100]
+        result = make_judge(grade, points)
+        assert False
+    except Exception as e:
+        assert e.args[0] == "pointsには0~100の数値10個をリスト型を入力してください"
 
 
 # # 成績の指定
