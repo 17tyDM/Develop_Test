@@ -1,5 +1,5 @@
 def make_judge(grade:str, points:list[int])->int:
-    if grade in ["A", "B", "C", "D", "E"] and len(points) == 10:
+    if grade in ["A", "B", "C", "D", "E"] and len(points) == 10 and all(0 <= point <= 100 for point in points):
         # 評価「3」につながる処理
         if grade == "E" or min(points) < 10:
             return 3
@@ -16,7 +16,7 @@ def make_judge(grade:str, points:list[int])->int:
                 return 1
     elif grade not in ["A", "B", "C", "D", "E"]:
         raise Exception("graderにA～E以外の文字が入力されています")
-    elif len(points) != 10:
+    elif len(points) != 10 or all(0 <= point <= 100 for point in points):
         raise Exception("pointsには0~100の数値10個をリスト型を入力してください")
     else:
-        raise Exception("正しく入力されていません。")
+        raise Exception("正しく入力されていません")

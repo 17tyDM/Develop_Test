@@ -99,6 +99,20 @@ def test_make_judge_exercise_2():
         assert e.args[0] == "pointsには0~100の数値10個をリスト型を入力してください"
 
 
+def test_make_judge_exercise_3():
+    """
+    スライド22ページ：課題
+    テスト内容：pointsの値に100.1の場合
+    """
+    try:
+        grade = "A"
+        points = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100.1]
+        result = make_judge(grade, points)
+        assert False
+    except Exception as e:
+        assert e.args[0] == "正しく入力されていません"
+
+
 # # 成績の指定
 # grade = input("成績を入力してください。(英字[A-E])：").upper()
 # # points のランダム生成
